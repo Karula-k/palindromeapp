@@ -66,8 +66,9 @@ class HomeScreen extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.green)),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushNamed(ListUserScreen.routeNamed);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              ListUserScreen(username: model.username)));
                     },
                     child: const Text("Choose user")),
               ),

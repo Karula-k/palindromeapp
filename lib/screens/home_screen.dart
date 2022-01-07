@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:palindromeapp/model/user_model.dart';
 import 'package:palindromeapp/screens/list_user.dart';
+import 'package:palindromeapp/screens/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final UserModel model;
@@ -14,8 +15,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: true,
-        leading: const BackButton(
+        leading: BackButton(
           color: Colors.black,
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed(LoginScreen.routeNamed);
+          },
         ),
         title: const Text(
           "Second Screen",
@@ -64,13 +68,13 @@ class HomeScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         )),
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.green)),
+                            MaterialStateProperty.all(Colors.teal[800])),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
                               ListUserScreen(username: model.username)));
                     },
-                    child: const Text("Choose user")),
+                    child: const Text("Choose a user")),
               ),
             ),
           ],

@@ -19,11 +19,6 @@ class ListUserScreen extends StatefulWidget {
 class _ListUserState extends State<ListUserScreen> {
   int number = 0;
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -62,17 +57,21 @@ class _ListUserState extends State<ListUserScreen> {
                     }
                     return false;
                   },
-                  child: ListView.builder(
-                      itemCount: result.list.length + 1,
-                      itemBuilder: (context, index) {
-                        return index == result.list.length
-                            ? const Center(
-                                child: Text("you have reached last page"))
-                            : UserTile(
-                                data: result.list[index],
-                                user: widget.username,
-                              );
-                      }),
+                  child: ListView.separated(
+                    itemCount: result.list.length + 1,
+                    itemBuilder: (context, index) {
+                      return index == result.list.length
+                          ? const Center(
+                              child: Text("you have reached bottom page"))
+                          : UserTile(
+                              data: result.list[index],
+                              user: widget.username,
+                            );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider();
+                    },
+                  ),
                 ),
               );
             } else if (result.state == ResultState.noData) {

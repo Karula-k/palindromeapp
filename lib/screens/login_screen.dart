@@ -35,10 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context, child) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-              'assets/btn_add_photo.png',
-              width: 120,
-              height: 120,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Image.asset(
+                'assets/btn_add_photo.png',
+                width: 120,
+                height: 120,
+              ),
             ),
             TextColumn(
               controllerPalindrom: _controlerPalindrom,
@@ -134,7 +137,7 @@ class ListButton extends StatelessWidget {
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 )),
-                backgroundColor: MaterialStateProperty.all(Colors.green)),
+                backgroundColor: MaterialStateProperty.all(Colors.teal[800])),
             onPressed: () {
               String textTest = controllerPalindrom.text;
               controllerPalindrom.clear();
@@ -177,13 +180,13 @@ class ListButton extends StatelessWidget {
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 )),
-                backgroundColor: MaterialStateProperty.all(Colors.green)),
+                backgroundColor: MaterialStateProperty.all(Colors.teal[800])),
             onPressed: () {
               if (controllerUser.text.isNotEmpty) {
                 Navigator.of(context).pushNamed(HomeScreen.routeNamed,
                     arguments: UserModel(
                         username: controllerUser.text,
-                        name: "No User is Selected"));
+                        name: "Selected User Name"));
                 controllerUser.clear();
               }
             },
